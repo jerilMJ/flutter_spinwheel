@@ -86,17 +86,28 @@ final spinwheelWithImage = Spinwheel(
 
 ## 📁 Sample
 
-<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; " >
-	<div style="text-align:center">
-		<img src="https://raw.githubusercontent.com/jerilMJ/flutter_spinwheel/develop/samples/text_demo.gif" width="500px">
-		Text Demo
-	</div>
-	<div style="text-align:center">
-		<img src="https://raw.githubusercontent.com/jerilMJ/flutter_spinwheel/develop/samples/image_demo.gif" width="500px">
-		Image Demo
-	</div>
-	<div style="text-align:center">
-		<img src="https://raw.githubusercontent.com/jerilMJ/flutter_spinwheel/develop/samples/sample.gif" width="500px">
-		Simple Demo
-	</div>
-</div>
+<table>
+    <tr>
+        <td align="center">
+            <img  src="https://raw.githubusercontent.com/jerilMJ/flutter_spinwheel/develop/samples/text_demo.gif"  width="500px">
+            Text Demo
+        </td>
+        <td align="center">
+            <img  src="https://raw.githubusercontent.com/jerilMJ/flutter_spinwheel/develop/samples/image_demo.gif"  width="500px">
+            Image Demo
+        </td>
+        <td align="center">
+            <img  src="https://raw.githubusercontent.com/jerilMJ/flutter_spinwheel/develop/samples/sample.gif"  width="500px">
+            Simple Demo
+        </td>
+    </tr>
+</table>
+
+## 🚀 Future Plans
+
+- Tap on any item on the spinner to rotate to that item
+- More fluid animations
+
+## 👨🏼‍💻 Support / Feature Request / Bug Report
+
+If you experience any issues or need help understanding some of the functionalities or you feel that it can be improved, feel free to open an issue on the repo (ofcourse, first look if there is already a similar open issue).

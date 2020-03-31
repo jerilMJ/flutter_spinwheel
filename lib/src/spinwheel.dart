@@ -38,7 +38,7 @@ class Spinwheel extends StatefulWidget {
 
   /// Callback that returns the selected value from spinner menu everytime the
   /// selection is changed.
-  VoidPassValue onChanged;
+  final VoidPassValue onChanged;
 
   /// The number of menu-items given to the spinwheel class.
   /// Should be handled in the constructor.

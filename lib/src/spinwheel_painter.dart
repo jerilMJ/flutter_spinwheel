@@ -3,7 +3,7 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 
-import '../named_image.dart';
+import 'named_image.dart';
 import 'painter_presets.dart';
 
 class SpinwheelPainter extends CustomPainter {
@@ -14,19 +14,10 @@ class SpinwheelPainter extends CustomPainter {
   /// Boolean that determines whether spinner shoudl rotate clockwise or counter-clockwise.
   final bool _clockwise;
 
-  /// Function that shifts the contents of the given list of options
-  /// depending on clockwise or counter-clockwise panning.
-  final Function _shifter;
-
   final Animation _rotationAnimation;
 
   /// The index of the sector that acts as the selection sector (highlighted).
   final int _selectSector;
-
-  /// This field is used to prevent multiple shifts that may occur when the animation
-  /// emits its values i.e, one rotation may result in two shifts if this field is not
-  /// present.
-  int _count = 0;
 
   final double _orientation;
 
@@ -58,7 +49,6 @@ class SpinwheelPainter extends CustomPainter {
     this._items,
     this._loadedImages,
     this._clockwise,
-    this._shifter,
     this._rotationAnimation,
     this._selectSector,
     this._shouldDrawDividers,
@@ -166,8 +156,10 @@ class SpinwheelPainter extends CustomPainter {
 
     if (_shouldDrawDividers)
       drawSectorDividers(canvas, radius, circleCenter, sectorOffsetAngles);
-
     canvas.restore();
+
+    rotateCanvas(canvas, radius, pi * 1.5);
+    rotateCanvas(canvas, radius, _orientation);
 
     if (_shouldHighlight)
       drawSelectionSector(canvas, radius, circleCenter, sectorOffsetAngles);
@@ -291,7 +283,6 @@ class SpinwheelPainter extends CustomPainter {
   ) {
     if (_highlightWhileRotating ||
         _rotationAnimation.status != AnimationStatus.forward) {
-      rotateCanvas(canvas, radius, -_orientation);
       canvas.drawArc(
           Rect.fromCircle(center: circleCenter, radius: radius),
           sectorOffsetAngles[_selectSector],
@@ -311,8 +302,7 @@ class SpinwheelPainter extends CustomPainter {
       shutterStartAngle = 0;
 
     canvas.drawArc(
-      Rect.fromCenter(
-          center: circleCenter, width: radius * 2, height: radius * 2),
+      Rect.fromCircle(center: circleCenter, radius: radius),
       shutterStartAngle,
       sweepAngle,
       true,
@@ -326,10 +316,6 @@ class SpinwheelPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(SpinwheelPainter oldDelegate) {
-    if (_rotationAnimation.status != AnimationStatus.forward && _count < 1) {
-      _shifter();
-      _count++;
-    }
     return true;
   }
 }

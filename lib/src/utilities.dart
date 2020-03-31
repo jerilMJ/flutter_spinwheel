@@ -3,33 +3,42 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 
-import '../named_image.dart';
+import 'named_image.dart';
 
+class Utilities {
 // Loading images from assetbundle using path from details in [imageItems].
-void loadImages(List<NamedImage> imageItems, BuildContext context,
-    List<ui.Image> loadedImages, Function notify) async {
-  for (NamedImage namedImage in imageItems) {
-    ByteData byteData = await DefaultAssetBundle.of(context)
-        .load(namedImage.path)
-        .catchError((error) {
-      throw FlutterError(
-          'Error while loading image at ${namedImage.path}.. Check if the asset is'
-          'specified in pubspec.yaml and that the path is correct. Error info: $error');
-    });
+  static void loadImages(List<NamedImage> imageItems, BuildContext context,
+      List<ui.Image> loadedImages, Function notify, State state) async {
+    ByteData byteData;
+    Uint8List buffer;
+    ui.Codec codec;
+    ui.FrameInfo frameInfo;
 
-    Uint8List buffer = Uint8List.view(byteData.buffer);
-    ui.Codec codec = await ui.instantiateImageCodec(buffer);
+    for (NamedImage namedImage in imageItems) {
+      if (state.mounted) {
+        byteData = await DefaultAssetBundle.of(context)
+            .load(namedImage.path)
+            .catchError((error) {
+          throw FlutterError(
+              'Error while loading image at ${namedImage.path}.. Check if the asset is'
+              'specified in pubspec.yaml and that the path is correct. Error info: $error');
+        });
 
-    ui.FrameInfo frameInfo = await codec.getNextFrame();
-    loadedImages.add(frameInfo.image);
+        buffer = Uint8List.view(byteData.buffer);
+        codec = await ui.instantiateImageCodec(buffer);
+
+        frameInfo = await codec.getNextFrame();
+        loadedImages.add(frameInfo.image);
+      }
+    }
+    if (state.mounted) notify();
   }
-  notify();
-}
 
-void shiftItemsLeft(List<dynamic> items) {
-  items.add(items.removeAt(0));
-}
+  static void shiftItemsLeft(List<dynamic> items) {
+    items.add(items.removeAt(0));
+  }
 
-void shiftItemsRight(List<dynamic> items) {
-  items.insert(0, items.removeLast());
+  static void shiftItemsRight(List<dynamic> items) {
+    items.insert(0, items.removeLast());
+  }
 }

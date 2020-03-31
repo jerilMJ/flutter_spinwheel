@@ -1,0 +1,24 @@
+name: example
+description: A new Flutter project.
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_spinwheel:
+    path: ../
+  carousel_slider: ^1.4.1
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/cat.jpg
+    - assets/images/dog.jpg
+    - assets/images/budgie.jpg
+    - assets/images/goldfish.jpg
+    - assets/images/car.jpg
+    - assets/images/bike.jpg
+    - assets/images/other.jpg

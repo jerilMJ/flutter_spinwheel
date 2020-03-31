@@ -11,7 +11,7 @@ class PainterPresets {
     return Paint()
       ..style = PaintingStyle.stroke
       ..strokeWidth = 5.0
-      ..color = Colors.blue.shade500;
+      ..color = Colors.grey.shade300;
   }
 
   Paint get sectorDividerPaintPreset {
@@ -24,7 +24,7 @@ class PainterPresets {
   Paint get centerPiecePaintPreset {
     return Paint()
       ..style = PaintingStyle.fill
-      ..color = Colors.red.shade300.withOpacity(0.3);
+      ..color = Colors.red.shade300;
   }
 
   Paint get highlightPaintPreset {
@@ -36,6 +36,6 @@ class PainterPresets {
   Paint get shutterPaintPreset {
     return Paint()
       ..style = PaintingStyle.fill
-      ..color = Colors.blue.shade200;
+      ..color = Colors.grey.shade400;
   }
 }

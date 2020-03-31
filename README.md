@@ -1,6 +1,6 @@
-# flutter_spinwheel
+# 🎨 Flutter Spinwheel
 
-A new Flutter package project.
+
 
 ## Getting Started
 

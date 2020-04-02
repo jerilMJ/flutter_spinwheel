@@ -262,43 +262,46 @@ class _SpinwheelState extends State<Spinwheel>
 
   @override
   Widget build(BuildContext context) {
-    Widget wheel = AnimatedOpacity(
-      opacity: _isImageList
-          ? (loadedImages.length == widget.imageItems.length) ? 1 : 0
-          : 1,
-      duration: widget.fadeDuration,
-      child: GestureDetector(
-        onTap: _tapHandler,
-        onLongPress: _longPressHandler,
-        onLongPressEnd: _longPressEndHandler,
-        onPanUpdate: _panUpdateHandler,
-        onPanEnd: _panEndHandler,
-        child: CustomPaint(
-          painter: SpinwheelPainter(
-            widget.itemCount,
-            _isImageList,
-            _spinnerItems,
-            _isImageList ? loadedImages : null,
-            _movingClockwise,
-            _rotationAnimation,
-            widget.select,
-            widget.shouldDrawDividers,
-            widget.shouldDrawBorder,
-            widget.shouldDrawCenterPiece,
-            widget.hideOthers,
-            widget.shouldHighlight,
-            widget.highlightWhileRotating,
-            widget.wheelPaint,
-            widget.borderPaint,
-            widget.sectorDividerPaint,
-            widget.centerPiecePaint,
-            widget.highlightPaint,
-            widget.shutterPaint,
-            widget.wheelOrientation,
-          ),
-          child: Container(
-            width: widget.size,
-            height: widget.size,
+    Widget wheel = FittedBox(
+      fit: BoxFit.scaleDown,
+      child: AnimatedOpacity(
+        opacity: _isImageList
+            ? (loadedImages.length == widget.imageItems.length) ? 1 : 0
+            : 1,
+        duration: widget.fadeDuration,
+        child: GestureDetector(
+          onTap: _tapHandler,
+          onLongPress: _longPressHandler,
+          onLongPressEnd: _longPressEndHandler,
+          onPanUpdate: _panUpdateHandler,
+          onPanEnd: _panEndHandler,
+          child: CustomPaint(
+            painter: SpinwheelPainter(
+              widget.itemCount,
+              _isImageList,
+              _spinnerItems,
+              _isImageList ? loadedImages : null,
+              _movingClockwise,
+              _rotationAnimation,
+              widget.select,
+              widget.shouldDrawDividers,
+              widget.shouldDrawBorder,
+              widget.shouldDrawCenterPiece,
+              widget.hideOthers,
+              widget.shouldHighlight,
+              widget.highlightWhileRotating,
+              widget.wheelPaint,
+              widget.borderPaint,
+              widget.sectorDividerPaint,
+              widget.centerPiecePaint,
+              widget.highlightPaint,
+              widget.shutterPaint,
+              widget.wheelOrientation,
+            ),
+            child: Container(
+              width: widget.size,
+              height: widget.size,
+            ),
           ),
         ),
       ),

@@ -89,15 +89,15 @@ final spinwheelWithImage = Spinwheel(
 <table>
     <tr>
         <td align="center">
-            <img  src="https://raw.githubusercontent.com/jerilMJ/flutter_spinwheel/develop/samples/emoji_demo.gif"  width="500px">
+            <img  src="https://raw.githubusercontent.com/jerilMJ/flutter_spinwheel/master/screenshots/emoji_demo.gif"  width="500px">
             Text Demo
         </td>
         <td align="center">
-            <img  src="https://raw.githubusercontent.com/jerilMJ/flutter_spinwheel/develop/samples/image_demo.gif"  width="500px">
+            <img  src="https://raw.githubusercontent.com/jerilMJ/flutter_spinwheel/master/screenshots/image_demo.gif"  width="500px">
             Image Demo
         </td>
         <td align="center">
-            <img  src="https://raw.githubusercontent.com/jerilMJ/flutter_spinwheel/develop/samples/sample.gif"  width="500px">
+            <img  src="https://raw.githubusercontent.com/jerilMJ/flutter_spinwheel/master/screenshots/sample.gif"  width="500px">
             Simple Demo
         </td>
     </tr>
